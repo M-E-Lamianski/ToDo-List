@@ -3,6 +3,7 @@
 // ROOT
 const root = document.querySelector('#root')
 const header = createHeader()
+const todoList = createTodoList(todos)
 
 // HEADER
 function createHeader(){
@@ -17,6 +18,17 @@ function createHeader(){
 
     header.append(btnDelete, input, btnAdd)
     return header
+}
+
+// TODO-LIST
+function createTodoList(todos){
+    const list = createElement('div', 'd-flex flex-column gap-1', '')
+    todos.forEach(todo => {
+        const todoItem = createTodoItem(todo)
+        list.append(todoItem)
+    })
+    
+    return list
 }
 
 // UTILS
