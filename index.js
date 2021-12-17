@@ -4,6 +4,7 @@
 const root = document.querySelector('#root')
 const header = createHeader()
 const todoList = createTodoList(todos)
+const todoItem = createTodoItem(todos)
 
 // HEADER
 function createHeader(){
@@ -29,6 +30,24 @@ function createTodoList(todos){
     })
     
     return list
+}
+
+//TODO-ITEM
+function createTodoItem(todo){
+    const todoItem = createElement('div', 'd-flex align-items-center gap-1 border border-dark border-1 py-2 px-5 rounded-3')
+    todoItem.id = todo.id
+    const input = createElement('input', '', '')
+    input.type = 'checkbox'
+    input.checked = todo.isCompleted
+    const text = createElement('p', 'flex-grow-1 m-0', todo.text)
+    const itemDate = createElement('span', 'm-0 badge bg-secondary', todo.date)
+    const btnDelete = createElement('button', 'btn btn-danger', 'delete')
+
+    input.id = 'checkbox'
+    btnDelete.id = 'deleteItem'
+
+    todoItem.append(input, text, itemDate, btnDelete)
+    return todoItem
 }
 
 // UTILS
