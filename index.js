@@ -30,6 +30,13 @@ const todoItem = createTodoItem(todos)
 
 root.append(header, todoList)
 
+// RENDER
+function renderTodos(){
+    const todoList = createTodoList(todos)
+    root.innerHTML = ''
+    root.append(header, todoList)
+}
+
 // HEADER
 function createHeader(){
     const header = createElement('header', 'd-flex align-items-center gap-2 m-2')
