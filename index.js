@@ -1,5 +1,27 @@
 'use strict'
 
+// DATA
+const todos = [
+    {
+        id: 1,
+        text: 'watch TV',
+        isCompleted: false,
+        date: new Date().toLocaleDateString()
+    },
+    {
+        id: 2,
+        text: 'play games',
+        isCompleted: false,
+        date: new Date().toLocaleDateString()
+    },
+    {
+        id: 3,
+        text: 'learn frontend',
+        isCompleted: false,
+        date: new Date().toLocaleDateString()
+    },
+]
+
 // ROOT
 const root = document.querySelector('#root')
 const header = createHeader()
