@@ -30,6 +30,41 @@ const todoItem = createTodoItem(todos)
 
 root.append(header, todoList)
 
+header.addEventListener('click', event => onHeaderClick(event))
+todoList.addEventListener('change', event => ifTodoListChange(event))
+todoList.addEventListener('click', event => onTodoListClick(event))
+
+// HANDLERS
+const onHeaderClick = (event) => {
+    if (event.target.id === 'btnAdd') {
+        const todo = {
+            id: todos.length + 1,
+            text: event.target.previousElementSibling.value,
+            isCompleted: false,
+            date: new Date().toLocaleDateString(),
+        }
+        todos.push(todo)
+        renderTodos()
+    } else if (event.target.id === 'btnDelete') {
+        todos.length = 0
+        renderTodos()
+    }
+}
+
+const ifTodoListChange = (event) => {
+    if (event.target.id === 'checkbox' && event.target.checked === true) {
+        event.target.parentElement.classList.add('background','bg-primary', 'text-white')
+    } else if (event.target.id === 'checkbox' && event.target.checked === false) {
+        event.target.parentElement.classList.remove('background','bg-primary', 'text-white')
+     }
+}
+
+const onTodoListClick = (event) => {
+    if (event.target.id === 'deleteItem') {
+        event.target.parentElement.classList.add('d-none')        
+    }
+}
+
 // RENDER
 function renderTodos(){
     const todoList = createTodoList(todos)
